@@ -7,7 +7,8 @@ Cílem hry je zabránit nepřátelům v dosažení konce cesty stavěním obrann
 
 ## Spuštění hry
 
-Pro spuštění hry spusťte soubor `Tower Defense.exe`, který se nachází ve složce `dist`.
+Pro spuštění hry spusťte soubor `Tower Defense.exe`, který se nachází ve složce `dist`.(Není třeba nic instalovat .. )
+Nebo pouštět přes terminál. Pouštět main.py ve složce 'Data'(Nejdříve potřeba nainstalovat pygame viz. odstavec 'Požadavky')
 
 ## Struktura projektu
 
