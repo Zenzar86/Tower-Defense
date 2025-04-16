@@ -1,5 +1,4 @@
 # Tower Defense Hra
-
 Jednoduchá Tower Defense hra vytvořená v Pythonu pomocí knihovny Pygame.
 
 ## Popis
