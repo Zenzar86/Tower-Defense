@@ -1,31 +1,31 @@
 # --- Constants ---
-SCREEN_WIDTH = 800  # Adjust as needed
-SCREEN_HEIGHT = 600 # Adjust as needed
-TILE_SIZE = 40 # Assuming tiles are 40x40, adjust if needed
+SCREEN_WIDTH = 800  
+SCREEN_HEIGHT = 600 
+TILE_SIZE = 40 
 ROWS = SCREEN_HEIGHT // TILE_SIZE
 COLS = SCREEN_WIDTH // TILE_SIZE
 FPS = 60
 
 # --- Wave Configuration ---
 MAX_WAVES = 10
-ENEMY_HEALTH_SCALE_FACTOR = 1.2  # Increase health by 20% each wave
-ENEMY_SPEED_SCALE_FACTOR = 1.05   # Increase speed by 5% each wave
+ENEMY_HEALTH_SCALE_FACTOR = 1.2 
+ENEMY_SPEED_SCALE_FACTOR = 1.05   
 
 # --- Audio Settings ---
-music_volume = 0.4 # Default music volume (0.0 to 1.0)
-sfx_volume = 1.0   # Default sound effect volume (0.0 to 1.0)
-music_muted = False # Music mute state
-sfx_muted = False   # SFX mute state
+music_volume = 0.4 
+sfx_volume = 1.0   
+music_muted = False 
+sfx_muted = False   
 
 # --- Colors ---
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-GREEN = (0, 255, 0) # For grass/buildable
-BROWN = (139, 69, 19) # For path
+GREEN = (0, 255, 0) 
+BROWN = (139, 69, 19) 
 RED = (255, 0, 0)
-BLUE = (0, 0, 255) # Added for SFX volume bar
+BLUE = (0, 0, 255) 
 GOLD = (255, 215, 0)
-UI_BG_COLOR = (60, 60, 80, 200) # Semi-transparent UI background
+UI_BG_COLOR = (60, 60, 80, 200) 
 UI_BORDER_COLOR = (180, 180, 200)
 UI_BUTTON_COLOR = (80, 80, 100)
 UI_BUTTON_HOVER_COLOR = (100, 100, 120)
@@ -45,23 +45,14 @@ TOWER_SELL_PERCENTAGE = 0.6 # Sell towers for 60% of their total invested cost
 
 import pygame
 import os
-import sys # Import sys for PyInstaller path check
+import sys 
 
-# --- Resource Path Helper (for PyInstaller) ---
-def get_resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
+# --- Resource Path Helper  ---
+def get_resource_path(relative_path): # Pro pyinstallera ...
     try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
-        # When using --add-data "Data;.", the Data folder's contents are at the root (_MEIPASS).
-        # The relative_path passed in (e.g., 'Environment/Grass/grass.png')
-        # When using --add-data "Data;Data", the relative path needs to be prefixed with "Data"
-        # inside the _MEIPASS directory.
         return os.path.join(base_path, "Data", relative_path)
     except Exception:
-        # sys._MEIPASS is not defined, so running in normal Python environment
-        # Use path relative to this config.py file's directory
-        # Use path relative to config.py
         base_path = os.path.dirname(os.path.abspath(__file__))
         return os.path.join(base_path, relative_path)
 

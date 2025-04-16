@@ -1,23 +1,22 @@
-# Data/game_ui.py
 import pygame
 import math
 import config
 from languages import get_text
 
 def draw_ui(surface, fonts, player_stats, game_state, current_wave, wave_ongoing, last_wave_end_time, wave_delay, button_rects):
-    """Draws the main game HUD (Health, Gold, Wave, Timer, Help Button)."""
+    """Kreslí hlavní herní HUD (Zdraví, Zlato, Vlna, Časovač, Tlačítko nápovědy)."""
     ui_font = fonts['default']
-    # Health & Gold
+    # Zdraví a Zlato
     health_label = get_text("health_label"); gold_label = get_text("gold_label")
     health_text = ui_font.render(f"{health_label}: {player_stats['health']}", True, config.RED)
     currency_text = ui_font.render(f"{gold_label}: {player_stats['currency']}", True, config.GOLD)
     surface.blit(health_text, (10, 10)); surface.blit(currency_text, (10, 40))
-    # Wave Display
+    # Zobrazení Vlny
     wave_label = get_text("wave_label")
     wave_number_text = ui_font.render(f"{wave_label}: {current_wave}/{config.MAX_WAVES}", True, config.WHITE)
     wave_number_rect = wave_number_text.get_rect(topright=(config.SCREEN_WIDTH - 10, 10))
     surface.blit(wave_number_text, wave_number_rect)
-    # Next Wave Timer
+    # Časovač pro další vlnu
     if game_state == "playing" and not wave_ongoing and current_wave < config.MAX_WAVES:
         time_now = pygame.time.get_ticks()
         time_remaining = wave_delay - (time_now - last_wave_end_time)
@@ -27,7 +26,7 @@ def draw_ui(surface, fonts, player_stats, game_state, current_wave, wave_ongoing
         timer_text = ui_font.render(timer_text_content, True, config.WHITE)
         timer_rect = timer_text.get_rect(topright=(config.SCREEN_WIDTH - 10, wave_number_rect.bottom + 5))
         surface.blit(timer_text, timer_rect)
-    # Help "?" Button
+    # Tlačítko nápovědy "?"
     help_font = fonts['small']
     help_text = help_font.render(get_text("help_button"), True, config.WHITE)
     help_text_rect = help_text.get_rect()
@@ -41,12 +40,12 @@ def draw_ui(surface, fonts, player_stats, game_state, current_wave, wave_ongoing
     pygame.draw.rect(surface, config.UI_BORDER_COLOR, temp_help_button_rect, 1, border_radius=3)
     help_text_rect.center = temp_help_button_rect.center
     surface.blit(help_text, help_text_rect)
-    button_rects['help'] = temp_help_button_rect # Store rect
+    button_rects['help'] = temp_help_button_rect # Uložení obdélníku
 
 def draw_tower_menu(surface, fonts, selected_tower_type):
-    """Draws the tower selection menu at the bottom."""
+    """Kreslí menu pro výběr věží na spodní části obrazovky."""
     menu_font = fonts['small']
-    # Use config for menu height if available, otherwise default
+    # Použijte config pro výšku menu, pokud je k dispozici, jinak výchozí
     try: menu_height = config.MENU_HEIGHT
     except AttributeError: menu_height = 80
 
@@ -54,26 +53,27 @@ def draw_tower_menu(surface, fonts, selected_tower_type):
     pygame.draw.rect(surface, (40, 40, 60), menu_rect)
     num_towers = len(config.TOWER_DATA)
     if num_towers == 0: return
-    # Calculate layout
+    # Vypočítejte rozložení
     item_w=60; item_h=menu_height-10; space=15
     total_w = (item_w * num_towers) + (space * (num_towers - 1))
     start_x = (config.SCREEN_WIDTH - total_w) // 2; current_x = start_x
     for tower_name, data in config.TOWER_DATA.items():
         try: cost = data['levels'][0]['cost']
-        except (KeyError, IndexError, TypeError): cost = 0; print(f"Warning: Cost missing for {tower_name}")
+        except (KeyError, IndexError, TypeError): cost = 0; print(f"Varování: Cena chybí pro {tower_name}")
         image = config.TOWER_MENU_IMAGES.get(tower_name)
         item_rect = pygame.Rect(current_x, config.SCREEN_HEIGHT - menu_height + 5, item_w, item_h)
-        # Background and Border
-        bg_color = (70,70,90); border_color = (150,150,180)
+       # Pozadí a Okraj
+        bg_color = (70, 70, 90); border_color = (150, 150, 180)
         if selected_tower_type == tower_name: border_color = config.GOLD
         pygame.draw.rect(surface, bg_color, item_rect, border_radius=5)
         pygame.draw.rect(surface, border_color, item_rect, 2, border_radius=5)
-        # Image
+        # Obrázek
         if image:
             img_rect = image.get_rect(centerx=item_rect.centerx, top=item_rect.top + 5)
             surface.blit(image, img_rect)
-        else: pygame.draw.rect(surface, config.RED, (item_rect.left+5, item_rect.top+5, item_w-10, item_h//2-10))
-        # Cost Text
+        else: 
+            pygame.draw.rect(surface, config.RED, (item_rect.left + 5, item_rect.top + 5, item_w - 10, item_h // 2 - 10))
+        # Text ceny
         cost_text = menu_font.render(f"{cost}", True, config.GOLD)
         cost_rect = cost_text.get_rect(centerx=item_rect.centerx, bottom=item_rect.bottom - 5)
         surface.blit(cost_text, cost_rect)

@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
-
-# Language data for the game
-# Using simple keys for easy access
-
 LANGUAGES = {
     'EN': {
-        # Menu Titles
+        # Názvy Menu
         "main_menu_title": "Tower Defense",
         "paused_title": "Paused",
         "tutorial_title": "How to Play",
@@ -13,7 +9,7 @@ LANGUAGES = {
         "victory_title": "Victory! - You Won!",
         "settings_title": "Settings",
 
-        # Button Labels
+        # Popisky Tlačítek
         "start_button": "Start",
         "exit_button": "Exit",
         "restart_button": "Restart",
@@ -21,29 +17,29 @@ LANGUAGES = {
         "upgrade_button": "Upgrade",
         "max_level_button": "Max Level",
         "sell_button": "Sell",
-        "help_button": "?", # Keep simple for button size
+        "help_button": "?", 
         "settings_button": "Settings",
         "back_button": "Back",
-        "mute_button": "Mute",     # New key
-        "unmute_button": "Unmute", # New key
+        "mute_button": "Mute",     
+        "unmute_button": "Unmute", 
 
-        # UI Labels
+        # UI Popisky
         "health_label": "Health",
         "gold_label": "Gold",
         "wave_label": "Wave",
         "next_wave_label": "Next",
         "next_wave_starting": "Starting...",
         "tower_level_label": "Lvl",
-        "volume_label_music": "Music Volume:", # New key
-        "volume_label_sfx": "SFX Volume:",     # New key
+        "volume_label_music": "Music Volume:", 
+        "volume_label_sfx": "SFX Volume:",     
 
-        # Tutorial Instructions
+        # Instrukce v Tutoriálu
         "tut_line_1": "Enemies follow the path. Build towers on platforms to stop them.",
         "tut_line_2": "Click tower icons below to select, then click a platform to build.",
         "tut_line_3": "Click placed towers to Upgrade/Sell. Earn gold by defeating enemies.",
         "tut_line_4": "Survive all waves to win! Press '?' during game for this help.",
 
-        # Tower Info Labels (in tutorial)
+        # Popisky Informací o Věžích (v tutoriálu)
         "cost_label": "Cost",
         "damage_label": "Dmg",
         "range_label": "Range",
@@ -53,17 +49,17 @@ LANGUAGES = {
         "effect_poison": "Poison",
         "effect_chain": "Chain damage",
         "stats_error": "Error: Stats missing",
-        "rate_suffix": "/s", # Suffix for fire rate
+        "rate_suffix": "/s",
 
-        # Tower Names (for Tutorial/Help)
+        # Názvy Věží (pro Tutoriál/Nápovědu)
         "tower_name_archer": "Archer",
         "tower_name_cannon": "Cannon",
         "tower_name_crossbow": "Crossbow",
         "tower_name_ice_wizard": "Ice Wizard",
-        "tower_name_lightning_wizard": "Lightning Wizard", # Assuming name consistency
+        "tower_name_lightning_wizard": "Lightning Wizard", 
         "tower_name_poison_wizard": "Poison Wizard",
 
-        # Other Messages
+        # Ostatní Zprávy
         "paused_message": "Game Paused",
         "resumed_message": "Game Resumed",
         "starting_message": "Starting New Game...",
@@ -89,20 +85,20 @@ LANGUAGES = {
         "warning_invalid_coords_sell": "Warning: Invalid grid coords ({grid_x}, {grid_y}) when selling tower.",
         "boss_scaling_applied": "Applying special scaling for Wave 10 Demon Boss!",
 
-        # Game End Messages
+        # Zprávy na Konci Hry
         "game_over_message": "You survived {waves_survived} waves, but the enemies broke through!",
         "victory_message": "Congratulations! You defended the castle against all {max_waves} waves!",
     },
     'CZ': {
-        # Menu Titles
-        "main_menu_title": "Tower Defense",
+        # Tituly menu
+        "main_menu_title": "Obrana Věží",
         "paused_title": "Pozastaveno",
         "tutorial_title": "Jak Hrát",
         "game_over_title": "Konec Hry - Prohrál Jsi!",
         "victory_title": "Vítězství!",
         "settings_title": "Nastavení",
 
-        # Button Labels
+        # Popisky tlačítek
         "start_button": "Začít",
         "exit_button": "Konec",
         "restart_button": "Restart",
@@ -113,30 +109,30 @@ LANGUAGES = {
         "help_button": "?",
         "settings_button": "Nastavení",
         "back_button": "Zpět",
-        "mute_button": "Ztlumit",  # New key
-        "unmute_button": "Zapnout", # New key
+        "mute_button": "Ztlumit",  
+        "unmute_button": "Zapnout", 
 
-        # UI Labels
+        # Popisky UI
         "health_label": "Životy",
         "gold_label": "Zlato",
         "wave_label": "Vlna",
         "next_wave_label": "Další",
         "next_wave_starting": "Začíná...",
-        "tower_level_label": "Úr", # Zkratka pro úroveň
-        "volume_label_music": "Hlasitost Hudby:", # New key
-        "volume_label_sfx": "Hlasitost Zvuků:",   # New key
+        "tower_level_label": "Úroveň", 
+        "volume_label_music": "Hlasitost Hudby:", 
+        "volume_label_sfx": "Hlasitost Zvuků:",   
 
-        # Tutorial Instructions
+        # Pokyny pro tutoriál
         "tut_line_1": "Nepřátelé jdou po cestě. Stavěj věže na platformách, abys je zastavil.",
         "tut_line_2": "Klikni na ikonu věže dole pro výběr, pak klikni na platformu pro stavbu.",
         "tut_line_3": "Klikni na postavenou věž pro Vylepšení/Prodej. Získávej zlato ničením nepřátel.",
         "tut_line_4": "Přežij všechny vlny a vyhraj! Stiskni '?' během hry pro tuto nápovědu.",
 
-        # Tower Info Labels (in tutorial)
+        # Popisky informací o věžích (v tutoriálu)
         "cost_label": "Cena",
-        "damage_label": "Pošk", # Zkratka pro poškození
+        "damage_label": "Poškození", 
         "range_label": "Dosah",
-        "rate_label": "Rychl", # Zkratka pro rychlost
+        "rate_label": "Rychlost", 
         "effect_label": "Efekt",
         "effect_slow": "Zpomalení",
         "effect_poison": "Jed",
@@ -144,7 +140,7 @@ LANGUAGES = {
         "stats_error": "Chyba: Statistiky chybí",
         "rate_suffix": "/s",
 
-        # Tower Names (for Tutorial/Help)
+        # Názvy věží (pro tutoriál/nápovědu)
         "tower_name_archer": "Lukostřelec",
         "tower_name_cannon": "Kanón",
         "tower_name_crossbow": "Kuše",
@@ -152,7 +148,7 @@ LANGUAGES = {
         "tower_name_lightning_wizard": "Bleskový Mág",
         "tower_name_poison_wizard": "Jedový Mág",
 
-        # Other Messages
+        # Další zprávy
         "paused_message": "Hra Pozastavena",
         "resumed_message": "Hra Pokračuje",
         "starting_message": "Začíná Nová Hra...",
@@ -184,48 +180,42 @@ LANGUAGES = {
     }
 }
 
-# Default language
+# Výchozí jazyk
 DEFAULT_LANG = 'EN'
-current_language = DEFAULT_LANG # Start with default
+current_language = DEFAULT_LANG # výchozí
 
 def set_language(lang_code):
-    """Sets the current language."""
+    """Nastaví aktuální jazyk."""
     global current_language
     if lang_code in LANGUAGES:
         current_language = lang_code
-        print(f"Language set to: {lang_code}")
+        print(f"Jazyk nastaven na: {lang_code}")
     else:
-        print(f"Warning: Language code '{lang_code}' not found. Keeping '{current_language}'.")
-        # Optionally fall back to default if current is somehow invalid
+        print(f"Varování: Jazykový kód '{lang_code}' nebyl nalezen. Zachovávám '{current_language}'.")
+        # Volitelně se vrátit k výchozímu, pokud je aktuální nějakým způsobem neplatný
         if current_language not in LANGUAGES:
              current_language = DEFAULT_LANG
 
 def get_text(key, **kwargs):
-    """Gets the text for a given key in the current language, with optional formatting."""
-    # Ensure current_language is valid, fallback to DEFAULT_LANG if not
+    """Získá text pro daný klíč v aktuálním jazyce, s volitelným formátováním."""
+    # Zajistěte, aby byl current_language platný, v případě neplatnosti se vrátí k DEFAULT_LANG
     if current_language not in LANGUAGES:
-        print(f"Warning: Current language '{current_language}' is invalid. Falling back to '{DEFAULT_LANG}'.")
-        set_language(DEFAULT_LANG) # Reset to default
+        print(f"Varování: Aktuální jazyk '{current_language}' je neplatný. Přepínám na '{DEFAULT_LANG}'.")
+        set_language(DEFAULT_LANG) 
 
-    lang_dict = LANGUAGES.get(current_language) # No need for default here due to check above
-    text_template = lang_dict.get(key, f"<{key}_missing>") # Return key name if missing
+    lang_dict = LANGUAGES.get(current_language) 
+    text_template = lang_dict.get(key, f"<{key}_missing>") 
 
-    # Attempt formatting only if kwargs are provided
+    # Pokus o formátování pouze pokud jsou poskytnuty kwargs
     if kwargs:
         try:
             return text_template.format(**kwargs)
         except KeyError as e:
-            print(f"Warning: Missing format key '{e}' for text key '{key}' in language '{current_language}'")
-            return text_template # Return unformatted template on error
+            print(f"Varování: Chybějící formátovací klíč '{e}' pro textový klíč '{key}' v jazyce '{current_language}'")
+            return text_template 
         except Exception as e:
-            print(f"Error formatting text key '{key}' in language '{current_language}': {e}")
-            return text_template # Return unformatted template on other errors
+            print(f"Chyba při formátování textového klíče '{key}' v jazyce '{current_language}': {e}")
+            return text_template 
     else:
-        # If no kwargs, return the template directly (avoids .format() errors if template has {})
+        # Pokud nejsou žádné kwargs, vraťte šablonu přímo (vyhnete se chybám .format(), pokud má šablona {})
         return text_template
-
-# Example usage:
-# set_language('CZ')
-# print(get_text("start_button"))
-# print(get_text("wave_starting", current_wave=5, enemies_def="Slimes"))
-# print(get_text("tower_name_archer"))
