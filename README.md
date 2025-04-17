@@ -16,7 +16,6 @@ Nebo pouštět přes terminál. Pouštět main.py ve složce 'Data'(Nejdříve p
 *   **dist/**: Obsahuje spustitelný soubor hry (`Tower Defense.exe`).
 *   **.gitignore**: Specifikuje soubory a složky, které mají být ignorovány Gitem.
 *   **README.md**: Tento soubor.
-*   **Tower Defense.spec**: Konfigurační soubor pro PyInstaller (použitý k vytvoření `.exe`).
 
 ## Požadavky
 
