@@ -1,4 +1,4 @@
-# --- Constants ---
+# --- Konstanty ---
 SCREEN_WIDTH = 800  
 SCREEN_HEIGHT = 600 
 TILE_SIZE = 40 
@@ -6,18 +6,18 @@ ROWS = SCREEN_HEIGHT // TILE_SIZE
 COLS = SCREEN_WIDTH // TILE_SIZE
 FPS = 60
 
-# --- Wave Configuration ---
+# --- Konfigurace vln ---
 MAX_WAVES = 10
 ENEMY_HEALTH_SCALE_FACTOR = 1.2 
 ENEMY_SPEED_SCALE_FACTOR = 1.05   
 
-# --- Audio Settings ---
+# --- Nastavení zvuku ---
 music_volume = 0.4 
 sfx_volume = 1.0   
 music_muted = False 
 sfx_muted = False   
 
-# --- Colors ---
+# --- Barvy ---
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREEN = (0, 255, 0) 
@@ -32,23 +32,22 @@ UI_BUTTON_HOVER_COLOR = (100, 100, 120)
 UI_SELL_COLOR = (200, 80, 80)
 UI_UPGRADE_COLOR = (80, 200, 80)
 
-# --- Asset Paths ---
+# --- Cesty k assetům ---
 GRASS_PATH = 'Environment/Grass/grass.png'
-# PATH_PATH = 'Environment/Path/path.png' # Removed old single path
-PATH_DIR = 'Environment/Path' # Directory containing path segments (path0.png, path1.png, etc.)
+PATH_DIR = 'Environment/Path'
 TOWER_PATH = 'Towers/Combat Towers/spr_tower_archer.png'
 PROJECTILE_PATH = 'Towers/Combat Towers Projectiles/spr_tower_archer_projectile.png'
 DECORATION_FOLDER = 'Environment/Decoration'
 PLATFORM_PATH = 'Environment/Building_platform/platform.png'
-# --- Tower Settings ---
-TOWER_SELL_PERCENTAGE = 0.6 # Sell towers for 60% of their total invested cost
+# --- Nastavení věží ---
+TOWER_SELL_PERCENTAGE = 0.6 
 
 import pygame
 import os
 import sys 
 
-# --- Resource Path Helper  ---
-def get_resource_path(relative_path): # Pro pyinstallera ...
+# --- Pomocná funkce pro cesty k resource ---
+def get_resource_path(relative_path): # Pro pyinstaller ...
     try:
         base_path = sys._MEIPASS
         return os.path.join(base_path, "Data", relative_path)
@@ -56,56 +55,42 @@ def get_resource_path(relative_path): # Pro pyinstallera ...
         base_path = os.path.dirname(os.path.abspath(__file__))
         return os.path.join(base_path, relative_path)
 
-# Get the directory where config.py resides (still useful for some relative loads)
 CONFIG_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-# --- Asset Loading ---
+# --- Načítání assetů ---
 def load_image(filename, alpha=True):
-    """Helper function to load images using get_resource_path."""
-    absolute_path = get_resource_path(filename) # Use the helper function
-    # print(f"Attempting to load image from: {absolute_path}") # Keep debug print for now
+    absolute_path = get_resource_path(filename) 
     try:
         image = pygame.image.load(absolute_path)
         if alpha:
-            image = image.convert_alpha() # Use transparency
+            image = image.convert_alpha() 
         else:
-            image = image.convert() # No transparency needed (faster)
+            image = image.convert() 
     except pygame.error as e:
-        print(f"Cannot load image: {absolute_path}")
-        print(f"Pygame error: {e}") # Print the specific pygame error
-        # Return None on failure instead of exiting
         return None
     return image
 
-# --- Variables for Loaded Assets (initialized to None/empty) ---
+# --- Proměnné pro načtené assety (inicializováno na None/prázdné) ---
 PLATFORM_IMAGE = None
 TOWER_MENU_IMAGES = {}
 
-# --- Function to Load Assets Requiring Pygame Initialization ---
+# --- Funkce pro načítání assetů vyžadujících inicializaci Pygame ---
 def load_config_images():
-    """Loads and processes images that require pygame display mode to be set."""
-    global PLATFORM_IMAGE, TOWER_MENU_IMAGES # Declare intent to modify globals
-
-    print("--- Loading Config Images ---")
-
-    # --- Load Platform Image ---
+    global PLATFORM_IMAGE, TOWER_MENU_IMAGES 
+    # --- Načíst obrázek platformy ---
     platform_image_loaded = load_image(PLATFORM_PATH)
     if platform_image_loaded:
         try:
-            # Scale platform to match tower base size (TILE_SIZE)
             PLATFORM_IMAGE = pygame.transform.scale(platform_image_loaded, (TILE_SIZE, TILE_SIZE))
-            print("Platform image loaded and scaled.")
         except Exception as e:
-             print(f"ERROR: Could not scale platform image: {e}")
-             PLATFORM_IMAGE = None # Ensure it's None if scaling fails
+             PLATFORM_IMAGE = None 
     else:
-        print("ERROR: Failed to load platform image.")
-        PLATFORM_IMAGE = None # Ensure it's None if loading fails
+        PLATFORM_IMAGE = None 
 
-    # --- Load Tower Images Scaled for Menu Display ---
-    menu_image_size = TILE_SIZE - 10 # Make menu icons slightly smaller than tiles
-    temp_tower_menu_images = {} # Use a temporary dict
+    # --- Načíst obrázky věží změněné pro zobrazení v menu ---
+    menu_image_size = TILE_SIZE - 10 
+    temp_tower_menu_images = {} 
 
     for name, data in TOWER_DATA.items():
         img = load_image(data['image_path'])
@@ -113,53 +98,42 @@ def load_config_images():
             try:
                 scaled_img = pygame.transform.scale(img, (menu_image_size, menu_image_size))
                 temp_tower_menu_images[name] = scaled_img
-                print(f"Loaded and scaled menu image for tower: {name}")
             except Exception as e:
-                print(f"ERROR: Could not scale menu image for {name}: {e}")
-                # Create a fallback surface if scaling fails
                 fallback_surf = pygame.Surface((menu_image_size, menu_image_size))
-                fallback_surf.fill(RED) # Indicate error
+                fallback_surf.fill(RED) 
                 temp_tower_menu_images[name] = fallback_surf
         else:
-            # Fallback if image fails to load (error already printed by load_image)
             fallback_surf = pygame.Surface((menu_image_size, menu_image_size))
-            fallback_surf.fill(RED) # Indicate error
+            fallback_surf.fill(RED) 
             temp_tower_menu_images[name] = fallback_surf
-            print(f"Using fallback menu image for tower: {name}")
 
     TOWER_MENU_IMAGES = temp_tower_menu_images 
-    print("--- Finished Loading Config Images ---")
 
-# TOWER_SAMPLE_IMAGE = load_image(TOWER_PATH)
-
-
-# --- Tower Configuration ---
-# Central dictionary holding data for each tower type
+# --- Konfigurace věží ---
 TOWER_DATA = {
     "Archer": {
         "image_path": 'Towers/Combat Towers/spr_tower_archer.png',
         "projectile_path": 'Towers/Combat Towers Projectiles/spr_tower_archer_projectile.png',
         "sound_path": 'Audio/Towers/Archer.mp3', 
         "levels": [
-            # Level 1 (Index 0)
+            # Level 1 
             {
-                "cost": 50, # Initial cost
+                "cost": 50, 
                 "range": 150,
-                "fire_rate": 1.0, # Shots per second
+                "fire_rate": 1.0, 
                 "damage": 25,
-                "upgrade_cost": 75 # Cost to upgrade TO level 2
-                # "image_path": 'level1_image.png' # Optional: different image per level
+                "upgrade_cost": 75 
+                
             },
-            # Level 2 (Index 1)
+            # Level 2 
             {
-                "cost": 75, # Cost of the upgrade itself
+                "cost": 75, 
                 "range": 170,
                 "fire_rate": 1.2,
                 "damage": 50,
-                "upgrade_cost": 0 # Cost to upgrade TO level 3 (0 means max level)
+                "upgrade_cost": 0 
                 
             }
-            # Add Level 3 etc. here
         ]
     },
     "Cannon": {
