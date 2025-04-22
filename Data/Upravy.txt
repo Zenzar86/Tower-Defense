@@ -1,0 +1,10 @@
+Ještě než začneme .. Nepřidávej žádné komentáře .. Nikde
+Popis prvního (1st.png) obrázku
+1.Obrázky jsou divné .. Vypadá to, že se chtějí vejít do obrázku platformy.. Ale to by správně být nemělo .. Obrázky by měli mít zachovanou velikost a platforma by po postavení měla zmizet.. A to se zde taky neděje..
+2.Monstra - Bat a skeleton mají divně načtené obrázky .. Zkus se na to mrknout
+Popis druhého (2nd.png) obrázku
+Nejprve bych tě chtěl pochválit.. Mapa vypadá super a teď problémy
+1.Než se hra přepne do druhé mapy, chtěl bych, aby vyskočilo okénko, které bude řikat, že hráč dokončil první misi.. A bude mít v okénku tlačítko "Continue" nebo "Pokračovat"(Podle zvoleného jazyka)
+2.Dále bych aby na druhé mapě hrála hudba Main_2.mp3
+3.Na druhé mapě Odstraň všechny věže a nastav peníze na 400g(Jen pro druho mapu .. U první nech stále na začátku 200, jak je) ..
+ 
