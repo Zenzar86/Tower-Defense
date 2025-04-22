@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code settings
+.vscode/
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+*.env
+
+# PyInstaller build files
+build/
+*.spec
+
+# Distribution files (we will explicitly add the final .exe)
+# dist/
+
+# Operating System files
+.DS_Store
+Thumbs.db
